@@ -13,6 +13,13 @@ class Dice {
   }
 
   Dice({required this.name, required this.min, required this.max});
+
+  factory Dice.fromJson(dynamic json) {
+    return Dice(
+        name: json['name'] as String,
+        min: json['min'] as int,
+        max: json['max'] as int);
+  }
 }
 
 Future<List<Dice>> getAvailableDice() async {

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import './dice.dart';
 
 class DiceSet {
@@ -29,4 +31,12 @@ class DiceSet {
   }
 
   DiceSet({required this.name, required this.diceList});
+
+  factory DiceSet.fromJson(dynamic json) {
+    List<Dice> diceList = (json['diceList'] as List).map((i) {
+      return Dice.fromJson(i);
+    }).toList();
+
+    return DiceSet(name: json['name'], diceList: diceList);
+  }
 }
